@@ -7,7 +7,6 @@ import {
   Route
 } from 'react-router-dom';
 
-import PortfolioContainer from './portfolio/portfolio-container';
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -20,6 +19,9 @@ export default class App extends Component {
       <div className='app'>
         <Router>
           <div>
+            <h1>DevCamp React Starter</h1>
+            <h2>React Redux Router</h2>
+            <div>{moment().format('LLLL')}</div>
             <NavigationContainer />
 
             <Switch>
@@ -31,10 +33,6 @@ export default class App extends Component {
           </div>
         </Router>
 
-        <h1>DevCamp React Starter</h1>
-        <h2>React Redux Router</h2>
-        <div>{moment().format('LLLL')}</div>
-        <PortfolioContainer />
       </div>
     );
   }
