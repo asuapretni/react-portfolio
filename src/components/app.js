@@ -19,7 +19,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      loggrdInStatus: "NOT_LOGGED_IN"
+      loggedInStatus: "NOT_LOGGED_IN"
     };
 
     this.handleSuccessfullLogin = this.handleSuccessfullLogin.bind(this);
@@ -45,6 +45,8 @@ export default class App extends Component {
           <div>
 
             <NavigationContainer />
+
+            <h2>{this.state.loggedInStatus}</h2>
 
             <Switch>
               <Route exact path="/" component={Home} />
