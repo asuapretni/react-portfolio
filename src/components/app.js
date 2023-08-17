@@ -60,7 +60,7 @@ export default class App extends Component {
         return loggedIn;
       } else if (loggedIn && loggegInStatus === "NOT_LOGGED_IN") {
         this.setState({
-          loggegInStatus:"LOGGED_IN"
+          loggedInStatus:"LOGGED_IN"
         });
       } else if (!loggedIn && loggegInStatus === "LOGGED_IN") {
         this.setState({
