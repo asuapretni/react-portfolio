@@ -53,7 +53,10 @@ export default class PortfolioForm extends Component {
         url: url || "",
         editMode: true,
         apiUrl: `https://asuapretni.devcamp.space/portfolio/portfolio_items/${id}`,
-        apiAction: "patch"
+        apiAction: "patch",
+        thumb_image: thumb_image_url || "",
+        banner_image: banner_image_url || "",
+        logo: logo_url || ""
       });
     }
   }
@@ -213,14 +216,19 @@ export default class PortfolioForm extends Component {
             </div>
 
             <div className='image-uploaders'>
-              <DropzoneComponent
-                ref={this.thumbRef}
-                config={this.componentConfig()}
-                djsConfig={this.djsConfig()}
-                eventHandlers={this.handleThumbDrop()}
-              >
-                <div className='dz-message'>Thumbnail</div>
-              </DropzoneComponent>
+              {this.state.thumb_image && this.state.editMode ? (
+                <img src={this.state.thumb_image} />
+              ) : (
+                <DropzoneComponent
+                  ref={this.thumbRef}
+                  config={this.componentConfig()}
+                  djsConfig={this.djsConfig()}
+                  eventHandlers={this.handleThumbDrop()}
+                >
+                  <div className='dz-message'>Thumbnail</div>
+                </DropzoneComponent>
+              )}
+
 
               <DropzoneComponent
                 ref={this.bannerRef}
