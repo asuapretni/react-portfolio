@@ -18,6 +18,14 @@
         object-fit: cover;
         border-radius: 5px;
       }
+
+      .image-removal-link {
+        a{
+          font-weight: 900;
+          color: $warning;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
