@@ -20,8 +20,12 @@ class Blog extends Component {
 
   activateInfiniteScroll() {
     window.onscroll = () => {
+      if(this.state.isLoading || this.state.blogItems.length === this.state.totalCount) {
+        return;
+      }
+
       if(window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-        console.log("get more posts");
+        this.getBlogItems();
       }
     };
   }
@@ -30,11 +34,12 @@ class Blog extends Component {
     this.setState({
       currentPage: this.state.currentPage + 1
     })
-    axios.get("https://asuapretni.devcamp.space/portfolio/portfolio_blogs",
+    axios.get(`https://asuapretni.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage}`,
     { withCredentials: true })
     .then(response => {
+      console.log("getting", response.data);
       this.setState({
-        blogItems: response.data.portfolio_blogs,
+        blogItems: this.state.blogItems.concat(response.data.portfolio_blogs),
         totalCount: response.data.meta.total_records,
         isLoading: false
       });
